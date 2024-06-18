@@ -19,11 +19,18 @@ Route::group(['namespace' => 'Main'], function () {
     Route::get('/', 'IndexController');
 });
 
+Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
+    Route::group(['namespace' => 'Main'], function () {
+        Route::get('/', 'IndexController');
+    });
+});
+
 // --- Если без namespace в laravel10/app/Providers/RouteServiceProvider.php
 // Route::group(['namespace' => 'Main'], function () {
 //     Route::get('/', [IndexController::class, '__invoke']);
 // });
 // --------------------------------------------------------------------------
+
 Auth::routes();
 
 
