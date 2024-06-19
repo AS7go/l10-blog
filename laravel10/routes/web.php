@@ -23,6 +23,16 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
     Route::group(['namespace' => 'Main'], function () {
         Route::get('/', 'IndexController');
     });
+
+    Route::group(['namespace' => 'Category', 'prefix'=>'categories'], function () {
+        Route::get('/', 'IndexController');
+        // для теста роута
+        // Route::get('/', function(){
+        //     return 3333;
+        // });
+
+    });
+
 });
 
 // --- Если без namespace в laravel10/app/Providers/RouteServiceProvider.php
