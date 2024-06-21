@@ -8,7 +8,7 @@
               <div class="container-fluid">
                   <div class="row mb-2">
                       <div class="col-sm-6">
-                          <h1 class="m-0">{{$category->title}}</h1>
+                          <h1 class="m-0">{{ $category->title }}</h1>
                       </div><!-- /.col -->
                       <div class="col-sm-6">
                           <ol class="breadcrumb float-sm-right">
@@ -39,6 +39,14 @@
                                           <tr>
                                               <td>Name</td>
                                               <td>{{ $category->title }}</td>
+                                          </tr>
+                                          <tr>
+                                              <td>Created</td>
+                                              <td>{{ $category->created_at }}</td>
+                                          </tr>
+                                          <tr>
+                                              <td>Updated</td>
+                                              <td>{{ $category->updated_at }}</td>
                                           </tr>
                                       </tbody>
                                   </table>
