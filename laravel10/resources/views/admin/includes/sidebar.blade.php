@@ -12,7 +12,7 @@
                with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('admin.category.index')}}" class="nav-link">
                         {{-- https://fontawesome.com/v5/search?q=list&o=r&m=free --}}
                         {{-- <i class="nav-icon far fa-image"></i> --}}
                         {{-- <i class="fas fa-list-ol"></i> --}}

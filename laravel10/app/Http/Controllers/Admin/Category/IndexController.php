@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Admin\Category;
 
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        return view('admin.categories.index');
-        // dd('Category22222');
+        $categories =Category::all();
+        // dd($categories);
+
+        return view('admin.categories.index', compact('categories'));
     }
 }
 
