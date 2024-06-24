@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Category;
+namespace App\Http\Controllers\Admin\Tag;
 
 use App\Models\Category;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,7 @@ class UpdateController extends Controller
     {
         $data = $request->validated();
         $category->update($data);
-        return view('admin.category.show', compact('category'));
+        return view('admin.categories.show', compact('category'));
         // dd('Category22222');
     }
 }
