@@ -9,9 +9,26 @@
                   <div class="row mb-2">
                       <div class="col-sm-6 d-flex align-items-center">
                           <h1 class="m-0 mr-3">{{ $category->title }}</h1>
-                          <a href="{{route('admin.category.edit', $category->id)}}" class="text-success"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="{{ route('admin.category.edit', $category->id) }}" class="text-success"><i
+                                  class="fas fa-pencil-alt"></i></a>
+
+                          <form action="{{ route('admin.category.delete', $category->id) }}" method="POST" class="ml-2" id="delete-form-{{$category->id}}">
+                              @csrf
+                              @method('DELETE')
+                              <button type="button" class="border-0 bg-transparent" onclick="confirmDelete({{$category->id}})">
+                                  <i class="fas fa-trash text-danger" role="button"></i>
+                              </button>
+                          </form>
 
                       </div><!-- /.col -->
+
+                      <script>
+                        function confirmDelete(categoryId){
+                            if(confirm("Are you sure you want to delete this category?")){
+                                document.getElementById('delete-form-'+categoryId).submit();
+                            }
+                        }
+                      </script>  
                       <div class="col-sm-6">
                           <ol class="breadcrumb float-sm-right">
                               <li class="breadcrumb-item"><a href="#">Home</a></li>

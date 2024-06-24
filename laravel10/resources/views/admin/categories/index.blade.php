@@ -38,26 +38,53 @@
                               <div class="card-body table-responsive p-0">
                                   <table class="table table-hover text-nowrap">
                                       <thead>
-                                        {{-- @dd($categories) --}}
+                                          {{-- @dd($categories) --}}
                                           <tr>
                                               <th>ID</th>
                                               <th>Name</th>
                                               <th>Show</th>
                                               <th>Edit</th>
-                                              {{-- <th colspan="2" class="text-center">Actions</th> --}}
-                                              {{-- <th>Edit</th> --}}
+                                              <th>Delete</th>
+                                              {{-- <th colspan="3" class="text-center">Actions</th> --}}
                                           </tr>
                                       </thead>
                                       <tbody>
 
-                                        @foreach ($categories as $category)
-                                        <tr>
-                                            <td>{{$category->id}}</td>
-                                            <td>{{$category->title}}</td>
-                                            <td><a href="{{route('admin.category.show', $category->id)}}"><i class="far fa-eye"></i></a></td>
-                                            <td><a href="{{route('admin.category.edit', $category->id)}} "class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
-                                        </tr>
-                                        @endforeach
+                                          @foreach ($categories as $category)
+                                              <tr>
+                                                  <td>{{ $category->id }}</td>
+                                                  <td>{{ $category->title }}</td>
+                                                  <td><a href="{{ route('admin.category.show', $category->id) }}"><i
+                                                              class="far fa-eye"></i></a></td>
+                                                  <td><a
+                                                          href="{{ route('admin.category.edit', $category->id) }} "class="text-success"><i
+                                                              class="fas fa-pencil-alt"></i></a></td>
+                                                  <td>
+
+
+                                                      <form action="{{ route('admin.category.delete', $category->id) }}"
+                                                          method="POST" class="ml-3"
+                                                          id="delete-form-{{ $category->id }}">
+                                                          @csrf
+                                                          @method('DELETE')
+                                                          <button type="button" class="border-0 bg-transparent"
+                                                              onclick="confirmDelete({{ $category->id }})">
+                                                              <i class="fas fa-trash text-danger" role="button"></i>
+                                                          </button>
+                                                      </form>
+
+                                                      <script>
+                                                          function confirmDelete(categoryId) {
+                                                              if (confirm("Вы уверены, что хотите удалить эту категорию?")) {
+                                                                  document.getElementById('delete-form-' + categoryId).submit();
+                                                              }
+                                                          }
+                                                      </script>
+
+
+                                                  </td>
+                                              </tr>
+                                          @endforeach
 
                                       </tbody>
                                   </table>
